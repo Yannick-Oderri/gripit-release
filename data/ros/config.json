@@ -1,0 +1,38 @@
+{
+	"name":	"ros",
+	"colorImage": {
+		"path": "/camera/rgb",
+		"nameTemplate": "image_color{}",
+		"imgExt": ""
+	},
+	"depthImage":{
+		"path": "/camera/depth",
+		"nameTemplate": "image_raw{}",
+		"imgExt": ""
+	},
+	"database":{
+		"path":"params/",
+		"type":"folder",
+		"databaseName":""
+	},
+	"sceneScale":5,
+	"camera": {
+		"location": {
+			"x":-1.1706,
+			"y":25.0593,
+			"z":14.9121
+		},
+		"rotation": {
+			"x":48.6,
+			"y":0,
+			"z":46.7
+		},
+		"sensor": {
+			"size":{
+				"x":32,
+				"y":32
+			}
+		},
+		"focalLength":200
+	}
+}

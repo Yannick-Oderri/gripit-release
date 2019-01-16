@@ -1,0 +1,2 @@
+include src/gripit/resources/models/*.mtl
+include src/gripit/resources/models/*.obj
