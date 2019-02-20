@@ -153,6 +153,7 @@ class App(QtGui.QWidget):
     def initImageListComboBox(self):
         imageDescriptors = self.edgeProcessorContext.listAvailableImages()
         comboBox = QtWdgt.QComboBox()
+
         for descriptor in imageDescriptors:
             # do not add depth map to color listings
             if ("depth" in descriptor[0]) and (self.getContext().getMode() == ExecutionMode.DEVELOPMENT_ROS):
@@ -161,20 +162,28 @@ class App(QtGui.QWidget):
         def _imageSelectedEvent(val): # Image has been selected
             index = self.imageSelectBox.itemData(val)   
             self.loadImageFile(index)
-        comboBox.currentIndexChanged.connect(_imageSelectedEvent)
+        
+        if len(imageDescriptors) > 0:
+            comboBox.currentIndexChanged.connect(_imageSelectedEvent)
+        else:
+            comboBox.addItem("Color Topic Found", 0)
+
 
         qtComponentWrapper = QtWdgt.QGroupBox("Images")
         qtComponentLayout = QtWdgt.QGridLayout()
         qtComponentWrapper.setLayout(qtComponentLayout)
         qtComponentLayout.addWidget(comboBox, 0, 0, 1, 2)
 
-        # # If ROS, add depth option        
+        # # If ROS, add depth combobox option        
         if (self.getContext().getMode() == ExecutionMode.DEVELOPMENT_ROS):
             dcomboBox = QtWdgt.QComboBox()
-            self.dImageSelectBox = dcomboBox
+            self.dImageSelectBox = dcomboBox            
             for descriptor in imageDescriptors:
                 if "depth" in descriptor[0]:
                     dcomboBox.addItem(descriptor[0], descriptor[1])
+
+            if len(imageDescriptors) == 0:
+                dcomboBox.addItem("Depth Topic Available", 0)
 
             #def _imageSelectedEvent(val): # Image has been selected
             #    index = self.imageSelectBox.itemData(val)

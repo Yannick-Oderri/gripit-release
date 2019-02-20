@@ -48,8 +48,11 @@ class EdgeProcessingDetectContext(object):
         self.dataStorePath = dataStorePath
         dataStoreConfig = dataStorePath / "config.json"
         cwd = os.getcwd()
+        print(__file__)
+        print(self.dataStorePath)
         if not dataStoreConfig.is_file():
-            raise IOError("'{}' does not contain a configuration file.".format(cwd))
+            print("Dogs and")
+            raise IOError("'{}' does not contain a configuration file.".format(__file__))
 
         with open(str(dataStoreConfig)) as config_file:
             self.dataStoreConfig = json.load(config_file)
@@ -317,17 +320,18 @@ class EdgeProcessingDetectContext(object):
             dataStore: name of datastore to load images and dependent data
             _mode: staging mode to run code
         """
-        dataStorePath = Path("./data/{}/".format(dataStore))
+        coreFolderPath = os.path.dirname(__file__)
+        dataStorePath = os.path.join(coreFolderPath, "../data/{}/".format(dataStore))
+        print(dataStorePath)
         log.warn(_mode)
         try:
-
-            if not dataStorePath.is_dir():
+            if not os.path.isdir(dataStorePath):
                 raise NotADirectoryError("Datastore '{}' could not be located.".format(dataStore))  
             __CONTEXT
         except NameError:
             log.info("Initializing Edge Processing Context")
 
-            __CONTEXT = EdgeProcessingDetectContext(dataStorePath, _mode)
+            __CONTEXT = EdgeProcessingDetectContext(Path(dataStorePath), _mode)
             return __CONTEXT
         else:
             return __CONTEXT
