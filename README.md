@@ -1,3 +1,26 @@
+## gripit (kinetic) - 0.0.3-0
+
+The packages in the `gripit` repository were released into the `kinetic` distro by running `/usr/bin/bloom-release --rosdistro kinetic --track kinetic gripit` on `Wed, 20 Feb 2019 01:03:54 -0000`
+
+The `gripit` package was released.
+
+Version of package(s) in repository `gripit`:
+
+- upstream repository: https://github.com/Yannick-Oderri/GripIt.git
+- release repository: https://github.com/Yannick-Oderri/gripit-release.git
+- rosdistro version: `0.0.1-2`
+- old version: `0.0.1-2`
+- new version: `0.0.3-0`
+
+Versions of tools used:
+
+- bloom version: `0.7.2`
+- catkin_pkg version: `0.4.10`
+- rosdep version: `0.15.0`
+- rosdistro version: `0.7.2`
+- vcstools version: `0.1.40`
+
+
 ## gripit (kinetic) - 0.0.1-2
 
 The packages in the `gripit` repository were released into the `kinetic` distro by running `/usr/bin/bloom-release --rosdistro kinetic --track kinetic gripit` on `Wed, 23 Jan 2019 03:30:07 -0000`
